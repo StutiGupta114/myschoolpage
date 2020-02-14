@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Extramarks - The Learning App</title>
+    <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="homepage.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".owl-carousel").owlCarousel({
+                loop: false,
+                margin: 50,
+                nav: true,
+                items: 4,
+                dots: false,
+                responsive: { 0: { items: 1 }, 600: { items: 2 }, 1000: { items: 4 } }
+            })
+            function checkButton() {
+                var secondsBeforeExpire = 900;
+                var timer = setInterval(function () {
+                    document.getElementById("btnactive").disabled = false;
+                    if (secondsBeforeExpire <= 0) {
+                        document.getElementById("btnactive").disabled == true ? false : true;
+                        if (document.getElementById("btnactive").disabled == true)
+                            document.getElementById("btnactive").style.background = "grey";
+                        else
+                            document.getElementById("btnactive").style.background = "orange";
+                        clearInterval(timer);
+                        checkButton();
+                    }
+                    else {
+                        secondsBeforeExpire--;
+                        if (document.getElementById("btnactive").disabled == true)
+                            document.getElementById('set-timer').innerText = "Button would be re-activated in " + (secondsBeforeExpire / 60).toFixed() + " Minutes and " + secondsBeforeExpire % 60 + " Seconds";
+                        else
+                            document.getElementById('set-timer').innerText = "Button would be de-activated in " + (secondsBeforeExpire / 60).toFixed() + " Minutes and " + secondsBeforeExpire % 60 + " Seconds";
+                        //console.log(secondsBeforeExpire); 
+                    }
+                }, 1000);
+            }
+            checkButton();
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 100) {
+                    $('#sticky-bar').removeClass('invisible');
+                    $('#sticky-bar').addClass('visible');
+                    $('#sticky-bar').addClass('navbar-fixed');
+                }
+                else if ($(window).scrollTop() < 100) {
+                    $('#sticky-bar').addClass('invisible');
+                    $('#sticky-bar').removeClass('visible');
+                    $('#sticky-bar').removeClass('navbar-fixed');
+                }
+            })
+        });
+    </script>
+    <style>
+        .navbar-fixed {
+    top: 0;
+    z-index: 100;
+  position: fixed;
+    width: 100%;
+}
+        .carousel {
+            margin-top: 20px;
+        }
+
+        .carousel-item {
+            min-height: 280px;
+        }
+
+        .banner {
+            margin: 20px;
+        }
+
+        h2 {
+            font-size: 4.5rem;
+            color: darkblue;
+        }
+
+        h4 {
+            font-size: 2.5rem;
+            margin: 10px 10px 20px 10px;
+            color: darkblue;
+        }
+
+        .btn-banner-yellow {
+            border-radius: 50px;
+            color: white;
+            background: #f79649;
+        }
+
+        .btn-banner-blue {
+            border-radius: 50px;
+            color: white;
+            background: darkblue;
+        }
+
+        .nav-align {
+            padding: 10px 150px 10px 150px;
+        }
+
+        .product-tab,
+        .power-of-learning,
+        .whats-unique {
+            padding: 50px 50px 50px 50px;
+            margin: 50px 50px 50px 50px;
+        }
+
+        .owl-carousel .item {
+            margin: 3px;
+            background-repeat: no-repeat;
+            padding: 50px 0px 20px 20px;
+            display: block;
+            width: 100%;
+            height: auto
+        }
+        
+        .p10 {
+            padding: 10px
+        }
+
+        .or {
+            font-family: 'Poppins', sans-serif;
+            color: orange;
+        }
+
+        .p20 {
+            padding: 20px
+        }
+
+        .p50 {
+            padding: 50px 100px 50px 100px;
+        }
+        #sticky-bar{
+            background-color: blue;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center nav-align invisible"
+        id="sticky-bar">
+        <a href="/" class="navbar-brand d-flex w-50 mr-auto">
+            <img src="images\banner-logo.png" alt="logo" height="50px" width="100px" />
+        </a>
+        <div class="navbar-collapse collapse w-100">
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">Quick Links</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Acheive</a>
+                        <a class="dropdown-item" href="#">Learning App</a>
+                        <a class="dropdown-item" href="#">Kids Learning</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">K-12</a>
+                    <div class="dropdown-menu">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-4"
+                                style="background-color: rgb(0, 95, 139); color: white;">
+                                hi
+                            </div>
+                            <div class=" col-xs-12 col-sm-12 col-md-8">
+                                there
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">Test Prep</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <button type="button" id="btnactive" class="btn btn-banner-yellow btn-lg"
+                        style="margin:0px 20px 0px 20px;"> Activate </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" id="btnactive" class="btn btn-banner-yellow btn-lg"> SIGN UP </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center nav-align">
+        <div class="navbar-collapse collapse w-100">
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                <li class="nav-item">
+                    <a href="tel:1800-102-5301" style="font-size: 20px; margin: 10px 0px 10px 0px;">
+                        <i class="fa fa-phone" aria-hidden="true"></i>1800-102-5301
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <button type="button" id="btnactive" class="btn btn-banner-yellow btn-lg"
+                        style="margin:0px 20px 0px 20px;"> Activate </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" id="btnactive" class="btn btn-banner-yellow btn-lg"> SIGN UP </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center nav-align">
+        <a href="/" class="navbar-brand d-flex w-50 mr-auto">
+            <img src="images\banner-logo.png" alt="logo" />
+        </a>
+        <div class="navbar-collapse collapse w-100">
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Acheive</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Learning App</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Kids Learning</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">K-12</a>
+                    <div class="dropdown-menu">
+                        <div class="row">
+                            <div class="col-md-4" style="background-color: rgb(0, 95, 139); color: white;">
+                                hi
+                            </div>
+                            <div class="col-md-8">
+                                there
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">Test Prep</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#">School Solutions</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="banner">
+        <div id="banner-car" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#banner-car" data-slide-to="0" class="active"></li>
+                <li data-target="#banner-car" data-slide-to="1"></li>
+            </ol>
+            <div class="carousel-inner" style="position: relative; top: 100px;">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-sm-12 sol-xs-12 col-md-6" style="position: relative; left: 150px;">
+                            <h2>Learning is Fun <br /> with Extramarks!</h2>
+                            <h4>
+                                <img src="images\logo-small.png" alt="logo" />
+                                The Learning App
+                            </h4>
+                            <button type="button" id="btnactive" class="btn btn-banner-yellow btn-lg"> Activate
+                            </button>
+                            <p id="set-timer"> </p>
+                        </div>
+                        <div class="col-sm-12 sol-xs-12 col-md-6" style="position: relative; right: 150px;">
+                            <img src='images\bannerImage1.png' alt="image - 1" />
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-sm-12 sol-xs-12 col-md-6" style="position: relative; left: 150px;">
+                            <h2>Ultimate Route <br /> to JEE Success</h2>
+                            <h4>JEE Test Prep App by Extramarks</h4>
+                            <button type="button" class="btn btn-banner-yellow btn-lg"> Know More </button>
+                            <button type="button" class="btn btn-banner-yellow btn-lg"> JEE Crash Course </button>
+                        </div>
+                        <div class="col-sm-12 sol-xs-12 col-md-6" style="position: relative; right: 150px;">
+                            <img src='images\bannerImage2.png' alt="image - 2" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-tab p50">
+        <div class="owl-carousel owl-theme">
+            <div class="item" style="background-image: url('./images/test-prep.jpg');">
+                <h5>Test Prep</h5>
+                <p>Courses to prepare for <br /> competitive exams in online <br /> and offline mode</p>
+                <button class="btn btn-banner-yellow">View Details</button>
+            </div>
+            <div class="item" style="background-image: url('./images/test-prep.jpg');">
+                <h5>Coaching Center</h5>
+                <p>Courses to prepare for <br /> competitive exams in online <br /> and offline mode</p>
+                <button class="btn btn-banner-yellow">View Details</button>
+            </div>
+            <div class="item" style="background-image: url('./images/test-prep.jpg');">
+                <h5>CAP</h5>
+                <p>Identify your true <br /> potential with <br /> Extramarks CAP </p>
+                <button class="btn btn-banner-yellow">View Details</button>
+                <button class="btn btn-banner-yellow">Free Expert Advice</button>
+            </div>
+            <div class="item" style="background-image: url('./images/test-prep.jpg');">
+                <h5>SAT</h5>
+                <p> Prepare well for <br /> studying abroad </p>
+                <button class="btn btn-banner-yellow">View Details</button>
+            </div>
+            <div class="item" style="background-image: url('./images/test-prep.jpg');">
+                <h5>TOEFL</h5>
+                <p>The ultimate platform to <br /> boost your score online</p>
+                <button class="btn btn-banner-yellow">View Details</button>
+            </div>
+            <div class="item" style="background-image: url('./images/test-prep.jpg');">
+                <h5>PSAT</h5>
+                <p>Pace with PSAT to get <br /> Great SAT score</p>
+                <button class="btn btn-banner-yellow">View Details</button>
+            </div>
+            <div class="item" style="background-image: url('./images/test-prep.jpg');">
+                <h5>MIT</h5>
+                <p>A smart step to know which <br /> kind of Intelligent you are!</p>
+                <button class="btn btn-banner-yellow">View Details</button>
+            </div>
+        </div>
+    </div>
+    <section class="power-of-learning">
+        <div class="row">
+            <div class=" col-sm-12 sol-xs-12 col-md-5" style="padding : 200px 20px 20px 20px">
+                <img src="images\the-power-of-learning.png" alt="the power of total learning" class="float-right">
+            </div>
+            <div class="col-sm-12 sol-xs-12 col-md-7"
+                style="padding : 20px 200px 20px 20px; font-family:'Poppins', sans-serif;">
+                <img src="images\the-powe-of-total-learning-header.png" alt="the power of total learning header"
+                    class="p20" style="padding-left: 300px;" />
+                <h4 style="font-size : 2rem">The Power of Total Learning™</h4>
+                <p>
+                    <strong>Extramarks Total Learning</strong> Ecosystem is a One-App-One-Solution for all stakeholders
+                    –
+                    Students, Teachers and Parents . It allows students to access learning solutions mapped to their
+                    curriculum
+                    at home, while simultaneously allowing parents and teachers to track and evaluate the student’s
+                    performance.
+                </p>
+                <p class="or"><strong>Highlights - </strong></p>
+                <ul>
+                    <li class="p10">Deep, immersive learning, based on the Learn-Practice-Test pedagogy</li>
+                    <li class="p10">Promotes independent learning while maintaining continuity from school to home</li>
+                    <li class="p10">Ensures effective communication between all stakeholders</li>
+                </ul>
+                <p class="or">
+                    <strong>Extramarks Pedagogy is based on the three-pronged approach of Learn-Practice-Test
+                        (LPT)</strong>
+                </p>
+                <div class="row">
+                    <div class="col-sm-12 sol-xs-12 col-md-4 text-center">
+                        <img src="images\power-of-learning-icon1.png" alt="icon 1" class="p20">
+                        <p class="or"><strong>LEARN</strong></p>
+                        Concept Learning through rich media
+                    </div>
+                    <div class="col-sm-12 sol-xs-12 col-md-4 text-center">
+                        <img src="images\power-of-learning-icon2.png" alt="icon 2" class="p20">
+                        <p class="or"><strong>PRACTICE</strong></p>
+                        Application of concepts through different tools
+                    </div>
+                    <div class=" col-sm-12 sol-xs-12 col-md-4 text-center">
+                        <img src="images\power-of-learning-icon3.png" alt="icon 3" class="p20">
+                        <p class="or"><strong>TEST</strong></p>
+                        Robust adaptive testing
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="whats-unique">
+        <div class="text-center">
+            <img src="images\whats-unique-top.png" alt="what-unique-header">
+            <h4 style="font-size : 2rem">Whats Unique with Extramarks</h4>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 sol-xs-12 col-md-6 p10">
+                <div class="media">
+                    <div class="media-left">
+                        <img src="images\whats-unique-icon.png" alt="icon1" class="p10" height="100px" width="100px">
+                    </div>
+                    <div class="media-body">
+                        <h5 style="font-size : 22px; padding : 10px 10px 0px 10px" class="or">Adaptive Learning</h5>
+                        <p class="p10"> Learning with Extramarks is dynamic, interactive and responsive to unique
+                            learning needs of each child.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 sol-xs-12 col-md-6 p10">
+                <div class="media">
+                    <div class="media-left">
+                        <img src="images\whats-unique-icon.png" alt="icon1" class="p10" height="100px" width="100px">
+                    </div>
+                    <div class="media-body">
+                        <h5 style="font-size : 22px; padding : 10px 10px 0px 10px" class="or">Reports and Analytics</h5>
+                        <p class="p10"> Extramarks has a robust testing platform backed by AI-backed performance
+                            analysis and generation of extensive reports.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 sol-xs-12 col-md-6 p10">
+                <div class="media">
+                    <div class="media-left">
+                        <img src="images\whats-unique-icon.png" alt="icon1" class="p10" height="100px" width="100px">
+                    </div>
+                    <div class="media-body">
+                        <h5 style="font-size : 22px; padding : 10px 10px 0px 10px" class="or">Unlimited Doubt Solving
+                        </h5>
+                        <p class="p10"> Doubt solving is easy and instant with Alex, an AI-based studybot and personal
+                            Academic Guru.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 sol-xs-12 col-md-6 p10">
+                <div class="media">
+                    <div class="media-left">
+                        <img src="images\whats-unique-icon.png" alt="icon1" class="p10" height="100px" width="100px">
+                    </div>
+                    <div class="media-body">
+                        <h5 style="font-size : 22px; padding : 10px 10px 0px 10px" class="or">Academic Guru</h5>
+                        <p class="p10"> Extramarks provides personalised guidance under Achieve, where a dedicated
+                            Academic Guru is aligned to each student.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 sol-xs-12 col-md-6 p10">
+                <div class="media">
+                    <div class="media-left">
+                        <img src="images\whats-unique-icon.png" alt="icon1" class="p10" height="100px" width="100px">
+                    </div>
+                    <div class="media-body">
+                        <h5 style="font-size : 22px; padding : 10px 10px 0px 10px" class="or">Customised Worksheets</h5>
+                        <p class="p10"> Special worksheets are curated for students based on their performance and
+                            academic goals.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 sol-xs-12 col-md-6 p10">
+                <div class="media">
+                    <div class="media-left">
+                        <img src="images\whats-unique-icon.png" alt="icon1" class="p10" height="100px" width="100px">
+                    </div>
+                    <div class="media-body">
+                        <h5 style="font-size : 22px; padding : 10px 10px 0px 10px" class="or">Personalised Journey</h5>
+                        <p class="p10"> Basis the individual needs and academic milestones of each student, an
+                            intelligent personalised learning path is created.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
