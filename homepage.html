@@ -25,7 +25,22 @@
                 dots: false,
                 responsive: { 0: { items: 1 }, 600: { items: 2 }, 1000: { items: 4 } }
             })
-            function checkButton() {
+            function checkCurrentTime() {
+                var isTime = false;
+                while(!isTime){
+                    var checkTime = setInterval(function(){
+                    var today = new Date();
+                    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                    console.log(time);
+                    if(time === '20:45:00'){
+                        isTime = true;
+                        checkButton();
+                    }
+                },1000);
+                }
+            }
+            checkCurrentTime();
+            function checkButton(){
                 var secondsBeforeExpire = 900;
                 var timer = setInterval(function () {
                     document.getElementById("btnactive").disabled = false;
@@ -36,7 +51,7 @@
                         else
                             document.getElementById("btnactive").style.background = "orange";
                         clearInterval(timer);
-                        checkButton();
+                        //checkButton();
                     }
                     else {
                         secondsBeforeExpire--;
@@ -48,6 +63,30 @@
                     }
                 }, 1000);
             }
+            // function checkButton() {
+            //     var secondsBeforeExpire = 900;
+            //     var timer = setInterval(function () {
+            //         document.getElementById("btnactive").disabled = false;
+            //         if()
+            //         if (secondsBeforeExpire <= 0) {
+            //             document.getElementById("btnactive").disabled == true ? false : true;
+            //             if (document.getElementById("btnactive").disabled == true)
+            //                 document.getElementById("btnactive").style.background = "grey";
+            //             else
+            //                 document.getElementById("btnactive").style.background = "orange";
+            //             clearInterval(timer);
+            //             checkButton();
+            //         }
+            //         else {
+            //             secondsBeforeExpire--;
+            //             if (document.getElementById("btnactive").disabled == true)
+            //                 document.getElementById('set-timer').innerText = "Button would be re-activated in " + (secondsBeforeExpire / 60).toFixed() + " Minutes and " + secondsBeforeExpire % 60 + " Seconds";
+            //             else
+            //                 document.getElementById('set-timer').innerText = "Button would be de-activated in " + (secondsBeforeExpire / 60).toFixed() + " Minutes and " + secondsBeforeExpire % 60 + " Seconds";
+            //             //console.log(secondsBeforeExpire); 
+            //         }
+            //     }, 1000);
+            // }
             checkButton();
             $(window).scroll(function () {
                 if ($(window).scrollTop() > 100) {
